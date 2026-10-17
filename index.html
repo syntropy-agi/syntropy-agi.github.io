@@ -3,15 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Syntropy AGI — Data & AI on Azure, Databricks and Snowflake</title>
-<meta name="description" content="Syntropy AGI designs, builds and runs data and AI platforms on Microsoft Azure, Databricks and Snowflake: data engineering, analytics, machine learning and governance.">
+<title>Syntropy AI — Data platforms and applied AI</title>
+<meta name="description" content="Syntropy AI builds data platforms and applied AI on Microsoft Azure, Databricks and Snowflake: lakehouses, semantic models, ontologies, MCP servers and AI agents.">
 <meta name="theme-color" content="#0F2E33">
 <link rel="canonical" href="https://syntropy-agi.github.io/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Syntropy AGI — Data & AI on Azure, Databricks and Snowflake">
-<meta property="og:description" content="We design, build and run data and AI platforms your teams can trust.">
+<meta property="og:title" content="Syntropy AI — Data platforms and applied AI">
+<meta property="og:description" content="Lakehouses, semantic models, ontologies, MCP servers and AI agents on Azure, Databricks and Snowflake.">
+<meta property="og:image" content="https://syntropy-agi.github.io/assets/syntropy-ai-logo-1200.png">
 <meta property="og:url" content="https://syntropy-agi.github.io/">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2E33'/%3E%3Ccircle cx='9' cy='23' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='16' cy='23' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='23' cy='23' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='16' cy='16' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='23' cy='16' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='23' cy='9' r='2.6' fill='%23E3A72F'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="assets/syntropy-ai-mark.svg">
+<link rel="apple-touch-icon" href="assets/syntropy-ai-logo-1200.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -19,9 +21,10 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Syntropy AGI",
+  "name": "Syntropy AI",
   "url": "https://syntropy-agi.github.io/",
-  "description": "Data engineering, analytics and AI consultancy on Microsoft Azure, Databricks and Snowflake."
+  "description": "Data platforms and applied AI consultancy on Microsoft Azure, Databricks and Snowflake: lakehouses, semantic models, ontologies, MCP servers and AI agents.",
+  "logo": "https://syntropy-agi.github.io/assets/syntropy-ai-logo-1200.png"
 }
 </script>
 <style>
@@ -141,7 +144,7 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
 /* Hero */
 .hero { padding: clamp(40px, 7vw, 96px) 0 clamp(56px, 8vw, 104px); overflow: hidden; }
 .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
-.hero h1 { max-width: 12ch; }
+.hero h1 { max-width: 13ch; }
 .hero-lede { font-size: clamp(1.1rem, 1.6vw, 1.25rem); color: var(--ink-2); max-width: 46ch; margin: 28px 0 36px; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-figure { position: relative; aspect-ratio: 1 / 0.92; width: 100%; }
@@ -176,6 +179,10 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
 }
 
 /* Services */
+.service-group + .service-group { margin-top: clamp(56px, 7vw, 88px); }
+.group-title { font-size: clamp(1.6rem, 2.6vw, 2rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 18px; display: flex; align-items: center; gap: 12px; font-variation-settings: "opsz" 64; }
+.group-title::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
+.service h4 { margin: 0; font-family: var(--display); font-size: clamp(1.2rem, 1.8vw, 1.45rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; font-variation-settings: "opsz" 32; }
 .service-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
 .service {
   display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr) minmax(0, 4fr);
@@ -275,9 +282,9 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
 
 <header class="site-header" id="top">
   <div class="wrap nav">
-    <a class="brand" href="#top" aria-label="Syntropy AGI home">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0F2E33"/><circle cx="9" cy="23" r="2.6" fill="#EEF2EF"/><circle cx="16" cy="23" r="2.6" fill="#EEF2EF"/><circle cx="23" cy="23" r="2.6" fill="#EEF2EF"/><circle cx="16" cy="16" r="2.6" fill="#EEF2EF"/><circle cx="23" cy="16" r="2.6" fill="#EEF2EF"/><circle cx="23" cy="9" r="2.6" fill="#E3A72F"/></svg>
-      Syntropy AGI
+    <a class="brand" href="#top" aria-label="Syntropy AI home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2E33"/><line x1="28" y1="72" x2="50" y2="50" stroke="#EEF2EF" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><line x1="50" y1="50" x2="72" y2="28" stroke="#EEF2EF" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><line x1="50" y1="72" x2="50" y2="50" stroke="#EEF2EF" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><line x1="72" y1="72" x2="72" y2="50" stroke="#EEF2EF" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><line x1="72" y1="50" x2="72" y2="28" stroke="#EEF2EF" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><circle cx="28" cy="72" r="8.5" fill="#EEF2EF"/><circle cx="50" cy="72" r="8.5" fill="#EEF2EF"/><circle cx="72" cy="72" r="8.5" fill="#EEF2EF"/><circle cx="50" cy="50" r="8.5" fill="#EEF2EF"/><circle cx="72" cy="50" r="8.5" fill="#EEF2EF"/><circle cx="72" cy="28" r="8.5" fill="#E3A72F"/></svg>
+      Syntropy AI
     </a>
     <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -297,8 +304,8 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <h1>Bring order to your data, then put it to work.</h1>
-        <p class="hero-lede">Syntropy AGI designs, builds and runs data and AI platforms on Microsoft Azure, Databricks and Snowflake. We take scattered sources and turn them into pipelines, models and AI your teams can trust.</p>
+        <h1>Bring order to your data, then put AI to work on it.</h1>
+        <p class="hero-lede">Syntropy AI builds data platforms and applied AI on Microsoft Azure, Databricks and Snowflake. That covers lakehouses and semantic models, and also ontologies, MCP servers and AI agents that understand your business and act on it.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#contact">Book a discovery call</a>
           <a class="btn btn-ghost" href="#services">See our services</a>
@@ -314,7 +321,7 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
     <div class="wrap">
       <div class="section-head">
         <h2>Three platforms, one way of working.</h2>
-        <p>We work hands-on across the three platforms most data teams run on. We'll tell you which one fits your problem, including when the answer is the one you already have.</p>
+        <p>We work hands-on across the three platforms most data teams run on, including the AI services each one offers. We'll tell you which one fits your problem, even when the answer is the one you already have.</p>
       </div>
       <div class="platform-cols">
         <article class="platform">
@@ -324,7 +331,7 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
             <li>Microsoft Fabric and OneLake</li>
             <li>Azure Synapse and Data Factory</li>
             <li>Power BI semantic models</li>
-            <li>Azure OpenAI and AI Foundry</li>
+            <li>Azure AI Foundry models and agents</li>
             <li>Microsoft Purview</li>
           </ul>
         </article>
@@ -345,7 +352,7 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
           <ul>
             <li>Warehouse design and Snowpark</li>
             <li>dbt modelling</li>
-            <li>Cortex AI</li>
+            <li>Cortex AI and Cortex Agents</li>
             <li>Streamlit in Snowflake</li>
             <li>Horizon governance and cost control</li>
           </ul>
@@ -358,40 +365,60 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
     <div class="wrap">
       <div class="section-head">
         <h2>What we do</h2>
-        <p>Engagements usually span more than one of these. Most start with the foundations, because analytics and AI are only as good as the data underneath them.</p>
+        <p>Two practices that work as one: AI that understands and acts on your business, and the data foundations it depends on. Most engagements touch both.</p>
       </div>
-      <ul class="service-list">
-        <li class="service">
-          <h3>Data platform engineering</h3>
-          <p>Lakehouse and warehouse foundations: ingestion, modelling, orchestration and CI/CD. Everything is built as code in your repository, so it survives the next team change.</p>
-          <ul class="tags"><li>Ingestion pipelines</li><li>Medallion architecture</li><li>Infrastructure as code</li><li>DevOps</li></ul>
-        </li>
-        <li class="service">
-          <h3>Analytics and BI</h3>
-          <p>Semantic models people actually reuse. Star schemas, governed measures and deployment pipelines, so every report tells the same story.</p>
-          <ul class="tags"><li>Power BI</li><li>Fabric</li><li>Dimensional modelling</li><li>Self-service</li></ul>
-        </li>
-        <li class="service">
-          <h3>AI and machine learning</h3>
-          <p>Forecasting, anomaly detection and assistants grounded in your own data. Evaluation, monitoring and access control are part of the build, not an afterthought.</p>
-          <ul class="tags"><li>RAG and agents</li><li>Predictive models</li><li>MLOps</li><li>MCP integrations</li></ul>
-        </li>
-        <li class="service">
-          <h3>Governance and data quality</h3>
-          <p>Catalogues, lineage, access policies and automated quality checks, so the numbers in the board pack match the numbers in the warehouse.</p>
-          <ul class="tags"><li>Unity Catalog</li><li>Purview</li><li>Data contracts</li><li>Quality testing</li></ul>
-        </li>
-        <li class="service">
-          <h3>Migration and modernisation</h3>
-          <p>Moving from on-premises SQL Server, legacy ETL or ageing warehouses to a modern platform in planned stages, with old and new running side by side until you're ready to switch.</p>
-          <ul class="tags"><li>SQL Server</li><li>Synapse to Fabric</li><li>Warehouse to lakehouse</li></ul>
-        </li>
-        <li class="service">
-          <h3>Cost and performance</h3>
-          <p>Find out where your compute spend goes. We right-size clusters, warehouses and capacities, and fix the slow queries and refreshes your users complain about.</p>
-          <ul class="tags"><li>FinOps</li><li>Query tuning</li><li>Capacity planning</li></ul>
-        </li>
-      </ul>
+
+      <div class="service-group">
+        <h3 class="group-title">Applied AI</h3>
+        <ul class="service-list">
+          <li class="service">
+            <h4>AI agents and assistants</h4>
+            <p>Agents that answer questions and carry out tasks using your data and systems. Grounded retrieval, tool use, evaluation and guardrails are part of the build, so you know when to trust the answer.</p>
+            <ul class="tags"><li>Agentic workflows</li><li>RAG</li><li>Evaluation</li><li>Guardrails</li></ul>
+          </li>
+          <li class="service">
+            <h4>MCP servers and integrations</h4>
+            <p>Model Context Protocol servers that let AI assistants and agents query your semantic models, warehouses and internal APIs, with authentication, row-level security and an audit trail.</p>
+            <ul class="tags"><li>Model Context Protocol</li><li>Semantic model access</li><li>Auth and audit</li><li>Databricks Apps</li></ul>
+          </li>
+          <li class="service">
+            <h4>Ontologies and knowledge graphs</h4>
+            <p>Define your business entities, relationships and rules once, such as customer, asset, contract or work order, so people, reports and AI agents all share the same meaning.</p>
+            <ul class="tags"><li>Ontology design</li><li>Knowledge graphs</li><li>Semantic layer</li><li>Entity resolution</li></ul>
+          </li>
+          <li class="service">
+            <h4>Machine learning and MLOps</h4>
+            <p>Forecasting, anomaly detection and predictive maintenance models, deployed with versioning, monitoring and retraining so they keep working after go-live.</p>
+            <ul class="tags"><li>Forecasting</li><li>Anomaly detection</li><li>MLflow</li><li>Model monitoring</li></ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="service-group">
+        <h3 class="group-title">Data foundations</h3>
+        <ul class="service-list">
+          <li class="service">
+            <h4>Data platform engineering</h4>
+            <p>Lakehouse and warehouse foundations: ingestion, modelling, orchestration and CI/CD, right-sized for cost. Everything is built as code in your repository, so it survives the next team change.</p>
+            <ul class="tags"><li>Ingestion pipelines</li><li>Medallion architecture</li><li>Infrastructure as code</li><li>Cost optimisation</li></ul>
+          </li>
+          <li class="service">
+            <h4>Analytics and BI</h4>
+            <p>Semantic models people actually reuse. Star schemas, governed measures and deployment pipelines, so every report and every AI answer tells the same story.</p>
+            <ul class="tags"><li>Power BI</li><li>Fabric</li><li>Dimensional modelling</li><li>Self-service</li></ul>
+          </li>
+          <li class="service">
+            <h4>Governance and data quality</h4>
+            <p>Catalogues, lineage, access policies and automated quality checks, so the numbers in the board pack match the numbers in the warehouse.</p>
+            <ul class="tags"><li>Unity Catalog</li><li>Purview</li><li>Data contracts</li><li>Quality testing</li></ul>
+          </li>
+          <li class="service">
+            <h4>Migration and modernisation</h4>
+            <p>Moving from on-premises SQL Server, legacy ETL or ageing warehouses to a modern platform in planned stages, with old and new running side by side until you're ready to switch.</p>
+            <ul class="tags"><li>SQL Server</li><li>Synapse to Fabric</li><li>Warehouse to lakehouse</li></ul>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -474,7 +501,7 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
       <div>
         <h2>Tell us what you're working on.</h2>
         <p class="lede">A 30-minute call is usually enough to tell whether we can help. No slides, no sales pitch.</p>
-        <a class="mail" id="mail-link" href="mailto:kkarthikraja1997@gmail.com">hello@syntropy-agi.com</a>
+        <a class="mail" id="mail-link" href="mailto:hello@syntropy-ai.example">hello@syntropy-ai.example</a>
         <p class="detail">Based in Copenhagen, working with teams across Europe.</p>
       </div>
       <form class="form" id="contact-form" novalidate>
@@ -489,13 +516,14 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
           </div>
         </div>
         <div class="field">
-          <label for="f-platform">Platform</label>
-          <select id="f-platform" name="platform">
-            <option>Not decided yet</option>
-            <option>Microsoft Azure / Fabric</option>
-            <option>Databricks</option>
-            <option>Snowflake</option>
-            <option>More than one</option>
+          <label for="f-topic">Topic</label>
+          <select id="f-topic" name="topic">
+            <option>Not sure yet</option>
+            <option>AI agents or assistants</option>
+            <option>MCP servers and integrations</option>
+            <option>Ontology or knowledge graph</option>
+            <option>Data platform or migration</option>
+            <option>Analytics and BI</option>
           </select>
         </div>
         <div class="field">
@@ -514,8 +542,8 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
 <footer class="site-footer">
   <div class="wrap">
     <a class="brand" href="#top">
-      <svg viewBox="0 0 32 32" aria-hidden="true" width="26" height="26"><rect width="32" height="32" rx="7" fill="#E4ECE9"/><circle cx="9" cy="23" r="2.6" fill="#0F2E33"/><circle cx="16" cy="23" r="2.6" fill="#0F2E33"/><circle cx="23" cy="23" r="2.6" fill="#0F2E33"/><circle cx="16" cy="16" r="2.6" fill="#0F2E33"/><circle cx="23" cy="16" r="2.6" fill="#0F2E33"/><circle cx="23" cy="9" r="2.6" fill="#E3A72F"/></svg>
-      Syntropy AGI
+      <svg viewBox="0 0 100 100" aria-hidden="true" width="26" height="26"><rect width="100" height="100" rx="22" fill="#E4ECE9"/><line x1="28" y1="72" x2="50" y2="50" stroke="#0F2E33" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><line x1="50" y1="50" x2="72" y2="28" stroke="#0F2E33" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><line x1="50" y1="72" x2="50" y2="50" stroke="#0F2E33" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><line x1="72" y1="72" x2="72" y2="50" stroke="#0F2E33" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><line x1="72" y1="50" x2="72" y2="28" stroke="#0F2E33" stroke-width="3.6" stroke-linecap="round" stroke-opacity=".5"/><circle cx="28" cy="72" r="8.5" fill="#0F2E33"/><circle cx="50" cy="72" r="8.5" fill="#0F2E33"/><circle cx="72" cy="72" r="8.5" fill="#0F2E33"/><circle cx="50" cy="50" r="8.5" fill="#0F2E33"/><circle cx="72" cy="50" r="8.5" fill="#0F2E33"/><circle cx="72" cy="28" r="8.5" fill="#E3A72F"/></svg>
+      Syntropy AI
     </a>
     <nav aria-label="Footer">
       <a href="#platforms">Platforms</a>
@@ -523,7 +551,7 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
       <a href="#approach">Approach</a>
       <a href="#contact">Contact</a>
     </nav>
-    <span>© <span id="year">2026</span> Syntropy AGI</span>
+    <span>© <span id="year">2026</span> Syntropy AI</span>
   </div>
 </footer>
 
@@ -570,7 +598,7 @@ const CONTACT_EMAIL = "hello@syntropy-ai.example";
     err.textContent = "";
     const company = (d.get("company") || "").trim();
     const subject = "Enquiry from " + name + (company ? " (" + company + ")" : "");
-    const body = msg + "\n\nPlatform: " + d.get("platform") + "\n\n" + name + (company ? "\n" + company : "");
+    const body = msg + "\n\nTopic: " + d.get("topic") + "\n\n" + name + (company ? "\n" + company : "");
     window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
   });
 
@@ -615,10 +643,15 @@ const CONTACT_EMAIL = "hello@syntropy-ai.example";
         });
       }
     }
-    // accent the top of the last few columns
-    const tops = pts.filter(p => p.top).slice(-3);
-    tops.forEach(p => p.col = ACCENT);
+    // a rising path of linked nodes across the column tops: order, then a graph on top of it
+    const allTops = pts.filter(p => p.top);
+    path = []; let best = Infinity;
+    allTops.forEach((p, i) => {
+      if ((i % 3 === 0 || i === allTops.length - 1) && p.ty <= best) { path.push(p); best = p.ty; }
+    });
+    path.forEach(p => { p.col = ACCENT; p.r *= 1.3; });
   }
+  let path = [];
 
   const ease = (t) => 1 - Math.pow(1 - t, 4);
 
@@ -646,6 +679,15 @@ const CONTACT_EMAIL = "hello@syntropy-ai.example";
       ctx.globalAlpha = p.a * (0.35 + 0.65 * e);
       ctx.fillStyle = p.col;
       ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    // draw the links once the points have mostly settled
+    const lp = reduce ? 1 : Math.max(0, Math.min(1, (el - 1700) / 900));
+    if (lp < 1) settled = false;
+    if (lp > 0 && path.length > 1) {
+      ctx.globalAlpha = 0.85 * lp; ctx.strokeStyle = ACCENT; ctx.lineWidth = 2; ctx.lineJoin = "round";
+      ctx.beginPath(); path.forEach((p, i) => i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)); ctx.stroke();
+      ctx.globalAlpha = 1; ctx.fillStyle = ACCENT;
+      path.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill(); });
     }
     ctx.globalAlpha = 1;
     running = !settled;

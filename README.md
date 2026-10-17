@@ -1,6 +1,6 @@
-# Syntropy AGI website
+# Syntropy AI website
 
-Static one-page site for Syntropy AGI — data and AI services on Microsoft Azure, Databricks and Snowflake.
+Static one-page site for Syntropy AI — data and AI services on Microsoft Azure, Databricks and Snowflake.
 No build step: plain HTML, CSS and JavaScript, ready for GitHub Pages.
 
 ## Files
@@ -10,6 +10,7 @@ No build step: plain HTML, CSS and JavaScript, ready for GitHub Pages.
 | `index.html` | The whole site (styles and scripts are inline) |
 | `404.html` | Page shown for broken links |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is |
+| `assets/` | Logo mark (SVG, used as the favicon) and a 1200px PNG used for link previews |
 
 ## Publish on GitHub Pages
 
@@ -35,7 +36,7 @@ For `syntropy-agi.github.io`:
 ## Things to edit before going live
 
 - **Contact email** — change `CONTACT_EMAIL` near the top of the `<script>` in `index.html`
-  (the placeholder `hello@syntropy-agi.com` is used in the visible link and the form).
+  (the placeholder `hello@syntropy-ai.example` is used in the visible link and the form).
 - **Location line** in the contact section ("Based in Copenhagen…").
 - **Sectors** list and **engagement models** wording, to match what you actually offer.
 

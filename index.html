@@ -24,7 +24,8 @@
   "name": "Syntropy AI",
   "url": "https://syntropy-agi.github.io/",
   "description": "Data platforms and applied AI consultancy on Microsoft Azure, Databricks and Snowflake: lakehouses, semantic models, ontologies, MCP servers and AI agents.",
-  "logo": "https://syntropy-agi.github.io/assets/syntropy-ai-logo-1200.png"
+  "logo": "https://syntropy-agi.github.io/assets/syntropy-ai-logo-1200.png",
+  "areaServed": ["Europe", "United Kingdom", "United States"]
 }
 </script>
 <style>
@@ -49,6 +50,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
@@ -248,8 +250,11 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
 .contact { background: var(--deep); color: var(--on-deep); }
 .contact h2 { color: #fff; max-width: 14ch; }
 .contact .lede { color: var(--on-deep-2); font-size: 1.125rem; max-width: 42ch; margin: 24px 0 32px; }
-.contact a.mail { font-family: var(--display); font-size: clamp(1.2rem, 2.4vw, 1.6rem); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 7px; word-break: break-word; }
-.contact .detail { margin-top: 28px; color: var(--on-deep-2); }
+.regions { border-top: 1px solid #3D5C61; padding-top: 22px; max-width: 30rem; }
+.regions p { color: var(--on-deep-2); margin: 0 0 12px; }
+.regions ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.regions li { font-family: var(--display); font-size: clamp(1.2rem, 2.2vw, 1.5rem); font-weight: 600; letter-spacing: -0.01em; color: #fff; display: flex; align-items: center; gap: 10px; }
+.regions li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .form { display: grid; gap: 18px; }
 .form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 @media (max-width: 560px) { .form .row { grid-template-columns: 1fr; } }
@@ -267,6 +272,16 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
 .form-note { font-size: .9rem; color: var(--on-deep-2); margin: 0; }
 .form .btn { justify-self: start; }
 .form-error { color: #F3C66A; font-size: .95rem; margin: 0; min-height: 1.4em; }
+.form-error a { color: inherit; }
+.form .btn[disabled] { opacity: .65; cursor: progress; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-done { align-self: start; border: 1.5px solid #3D5C61; border-radius: 14px; padding: 32px 28px; }
+.form-done:focus { outline: none; }
+.form-done h3 { color: #fff; font-size: clamp(1.5rem, 2.4vw, 1.9rem); margin-bottom: 10px; display: flex; align-items: center; gap: 12px; }
+.form-done h3::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
+.form-done p { color: var(--on-deep-2); margin: 0 0 24px; max-width: 40ch; }
+.btn-ghost-light { border-color: var(--on-deep-2); color: var(--on-deep); background: transparent; }
+.btn-ghost-light:hover { background: var(--on-deep); color: var(--ink); border-color: var(--on-deep); }
 
 /* Footer */
 .site-footer { background: var(--deep); color: var(--on-deep-2); border-top: 1px solid #23464C; padding: 32px 0 40px; font-size: .95rem; }
@@ -501,8 +516,14 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
       <div>
         <h2>Tell us what you're working on.</h2>
         <p class="lede">A 30-minute call is usually enough to tell whether we can help. No slides, no sales pitch.</p>
-        <a class="mail" id="mail-link" href="mailto:hello@syntropy-ai.example">hello@syntropy-ai.example</a>
-        <p class="detail">Based in Copenhagen, working with teams across Europe.</p>
+        <div class="regions">
+          <p>We work with teams across</p>
+          <ul>
+            <li>Europe</li>
+            <li>United Kingdom</li>
+            <li>United States</li>
+          </ul>
+        </div>
       </div>
       <form class="form" id="contact-form" novalidate>
         <div class="row">
@@ -515,25 +536,38 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
             <input id="f-company" name="company" autocomplete="organization">
           </div>
         </div>
-        <div class="field">
-          <label for="f-topic">Topic</label>
-          <select id="f-topic" name="topic">
-            <option>Not sure yet</option>
-            <option>AI agents or assistants</option>
-            <option>MCP servers and integrations</option>
-            <option>Ontology or knowledge graph</option>
-            <option>Data platform or migration</option>
-            <option>Analytics and BI</option>
-          </select>
+        <div class="row">
+          <div class="field">
+            <label for="f-email">Work email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="f-topic">Topic</label>
+            <select id="f-topic" name="topic">
+              <option>Not sure yet</option>
+              <option>AI agents or assistants</option>
+              <option>MCP servers and integrations</option>
+              <option>Ontology or knowledge graph</option>
+              <option>Data platform or migration</option>
+              <option>Analytics and BI</option>
+            </select>
+          </div>
         </div>
         <div class="field">
           <label for="f-message">What do you need help with?</label>
           <textarea id="f-message" name="message" placeholder="A few lines on your data, your platform and what you want to change." required></textarea>
         </div>
+        <!-- Spam trap: hidden from people, bots fill it in -->
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <p class="form-error" id="form-error" role="alert"></p>
-        <button class="btn btn-primary" type="submit">Write the email</button>
-        <p class="form-note">This opens your email app with your message filled in, ready to send.</p>
+        <button class="btn btn-primary" type="submit" id="form-submit">Send message</button>
+        <p class="form-note">Your message goes straight to our inbox, and we'll reply by email.</p>
       </form>
+      <div class="form-done" id="form-done" tabindex="-1" hidden>
+        <h3>Message sent.</h3>
+        <p id="form-done-text">Thanks. We'll reply to you by email.</p>
+        <button class="btn btn-ghost-light" type="button" id="form-again">Send another message</button>
+      </div>
     </div>
   </section>
 
@@ -556,14 +590,12 @@ h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0
 </footer>
 
 <script>
-/* ---- Edit this one line to set your contact address ---- */
-const CONTACT_EMAIL = "hello@syntropy-ai.example";
+/* ---- Setting: paste your free key from https://web3forms.com ----
+   Form submissions are emailed to the address you register there.
+   That address is never shown on the page. */
+const WEB3FORMS_ACCESS_KEY = "";
 
 (function () {
-  // Contact address
-  const mail = document.getElementById("mail-link");
-  mail.href = "mailto:" + CONTACT_EMAIL;
-  mail.textContent = CONTACT_EMAIL;
   document.getElementById("year").textContent = new Date().getFullYear();
 
   // Header border on scroll
@@ -582,24 +614,67 @@ const CONTACT_EMAIL = "hello@syntropy-ai.example";
   toggle.addEventListener("click", () => setMenu(!links.classList.contains("open")));
   links.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
 
-  // Contact form → prefilled email (works on static hosting, no backend)
+  // Contact form → emailed to your inbox via Web3Forms (static-site friendly)
   const form = document.getElementById("contact-form");
   const err = document.getElementById("form-error");
-  form.addEventListener("submit", (e) => {
+  const submitBtn = document.getElementById("form-submit");
+  const done = document.getElementById("form-done");
+  const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const d = new FormData(form);
     const name = (d.get("name") || "").trim();
+    const email = (d.get("email") || "").trim();
     const msg = (d.get("message") || "").trim();
-    if (!name || !msg) {
-      err.textContent = !name ? "Add your name so we know who to reply to." : "Add a few lines about what you need help with.";
-      (!name ? form.elements.name : form.elements.message).focus();
+    const company = (d.get("company") || "").trim();
+    const topic = d.get("topic");
+
+    let problem = null;
+    if (!name) problem = ["name", "Add your name so we know who to reply to."];
+    else if (!emailOk(email)) problem = ["email", "Add a valid email address so we can reply."];
+    else if (!msg) problem = ["message", "Add a few lines about what you need help with."];
+    if (problem) { err.textContent = problem[1]; form.elements[problem[0]].focus(); return; }
+    err.textContent = "";
+
+    const subject = "Website enquiry: " + topic + ", from " + name + (company ? " (" + company + ")" : "");
+
+    // Not connected yet (site owner hasn't added the key)
+    if (!WEB3FORMS_ACCESS_KEY) {
+      console.warn("Contact form: set WEB3FORMS_ACCESS_KEY in index.html to receive submissions.");
+      err.textContent = "The contact form isn't switched on yet. Please try again later.";
       return;
     }
-    err.textContent = "";
-    const company = (d.get("company") || "").trim();
-    const subject = "Enquiry from " + name + (company ? " (" + company + ")" : "");
-    const body = msg + "\n\nTopic: " + d.get("topic") + "\n\n" + name + (company ? "\n" + company : "");
-    window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+
+    submitBtn.disabled = true; submitBtn.textContent = "Sending…";
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject,
+          from_name: "Syntropy AI website",
+          name, email, company: company || "(not given)", topic, message: msg,
+          botcheck: d.get("botcheck") ? true : ""
+        })
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || !out.success) throw new Error(out.message || "Request failed");
+      form.reset();
+      form.hidden = true;
+      document.getElementById("form-done-text").textContent =
+        "Thanks, " + name.split(" ")[0] + ". We've got your message and will reply to " + email + ".";
+      done.hidden = false; done.focus();
+    } catch (ex) {
+      err.textContent = "Your message didn't send. Check your connection and try again in a moment. What you typed is still here.";
+    } finally {
+      submitBtn.disabled = false; submitBtn.textContent = "Send message";
+    }
+  });
+
+  document.getElementById("form-again").addEventListener("click", () => {
+    done.hidden = true; form.hidden = false; form.elements.name.focus();
   });
 
   // Hero: scattered points settle into an ordered dot-matrix chart

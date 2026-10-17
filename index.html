@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syntropy AI — Data & AI on Azure, Databricks and Snowflake</title>
+<meta name="description" content="Syntropy AI designs, builds and runs data and AI platforms on Microsoft Azure, Databricks and Snowflake: data engineering, analytics, machine learning and governance.">
+<meta name="theme-color" content="#0F2E33">
+<link rel="canonical" href="https://syntropy-agi.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Syntropy AI — Data & AI on Azure, Databricks and Snowflake">
+<meta property="og:description" content="We design, build and run data and AI platforms your teams can trust.">
+<meta property="og:url" content="https://syntropy-agi.github.io/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2E33'/%3E%3Ccircle cx='9' cy='23' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='16' cy='23' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='23' cy='23' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='16' cy='16' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='23' cy='16' r='2.6' fill='%23EEF2EF'/%3E%3Ccircle cx='23' cy='9' r='2.6' fill='%23E3A72F'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Syntropy AI",
+  "url": "https://syntropy-agi.github.io/",
+  "description": "Data engineering, analytics and AI consultancy on Microsoft Azure, Databricks and Snowflake."
+}
+</script>
+<style>
+:root {
+  --field: #EEF2EF;
+  --paper: #F8FAF8;
+  --ink: #0F2E33;
+  --ink-2: #44606A;
+  --line: #C8D3CF;
+  --accent: #E3A72F;
+  --accent-soft: #F6E3B6;
+  --deep: #0F2E33;
+  --on-deep: #E4ECE9;
+  --on-deep-2: #9DB4B5;
+
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+
+  --wrap: 1180px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section: clamp(72px, 10vw, 128px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--field);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; }
+p { margin: 0 0 1em; }
+
+h1, h2, h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  font-variation-settings: "opsz" 96;
+}
+h1 { font-size: clamp(2.6rem, 6.4vw, 5.1rem); }
+h2 { font-size: clamp(2rem, 4.2vw, 3.2rem); }
+h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; font-variation-settings: "opsz" 32; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+.skip {
+  position: absolute; left: -9999px; top: 8px;
+  background: var(--ink); color: var(--field); padding: 10px 16px; border-radius: 6px; z-index: 100;
+}
+.skip:focus { left: 8px; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .5em;
+  font: 600 1rem/1 var(--body);
+  padding: 15px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn-primary { background: var(--accent); color: var(--ink); }
+.btn-primary:hover { background: #D4961C; }
+.btn-ghost { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn-ghost:hover { background: var(--ink); color: var(--field); }
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--field) 88%, transparent);
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s ease;
+}
+.site-header.scrolled { border-bottom-color: var(--line); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em; }
+.brand svg { width: 30px; height: 30px; }
+.nav-links { display: flex; align-items: center; gap: 30px; list-style: none; margin: 0; padding: 0; }
+.nav-links a { text-decoration: none; font-weight: 500; font-size: .98rem; }
+.nav-links a:not(.btn):hover { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.nav-links .btn { padding: 11px 18px; font-size: .95rem; }
+.menu-toggle { display: none; background: none; border: 0; padding: 10px; margin-right: -10px; cursor: pointer; color: var(--ink); }
+.menu-toggle svg { width: 26px; height: 26px; }
+
+@media (max-width: 820px) {
+  .menu-toggle { display: block; }
+  .nav-links {
+    position: absolute; top: 72px; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: var(--field); border-bottom: 1px solid var(--line);
+    padding: 8px var(--gutter) 20px;
+    display: none;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li a:not(.btn) { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .nav-links li:last-child { margin-top: 16px; }
+  .nav-links .btn { width: 100%; padding: 15px 18px; }
+}
+
+/* Hero */
+.hero { padding: clamp(40px, 7vw, 96px) 0 clamp(56px, 8vw, 104px); overflow: hidden; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+.hero h1 { max-width: 12ch; }
+.hero-lede { font-size: clamp(1.1rem, 1.6vw, 1.25rem); color: var(--ink-2); max-width: 46ch; margin: 28px 0 36px; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-figure { position: relative; aspect-ratio: 1 / 0.92; width: 100%; }
+.hero-figure canvas { width: 100%; height: 100%; }
+.hero-figure figcaption { position: absolute; left: 0; bottom: -6px; font-size: .9rem; color: var(--ink-2); }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-figure { aspect-ratio: 1 / 0.8; max-width: 560px; }
+}
+
+/* Generic section */
+.section { padding: var(--section) 0; }
+.section-head { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 56px; align-items: end; margin-bottom: clamp(40px, 6vw, 72px); }
+.section-head p { color: var(--ink-2); max-width: 48ch; margin: 0; font-size: 1.125rem; }
+@media (max-width: 820px) { .section-head { grid-template-columns: 1fr; } }
+
+/* Platforms */
+.platforms { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.platform-cols { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--ink); }
+.platform { padding: 28px 28px 8px 0; }
+.platform + .platform { padding-left: 28px; border-left: 1px solid var(--line); }
+.platform h3 { margin-bottom: 10px; }
+.platform > p { color: var(--ink-2); min-height: 3.2em; }
+.platform ul { list-style: none; padding: 0; margin: 20px 0 0; }
+.platform li { padding: 11px 0; border-top: 1px solid var(--line); font-weight: 500; }
+@media (max-width: 860px) {
+  .platform-cols { grid-template-columns: 1fr; }
+  .platform, .platform + .platform { padding: 28px 0 8px; border-left: 0; }
+  .platform + .platform { border-top: 2px solid var(--ink); margin-top: 24px; }
+  .platform > p { min-height: 0; }
+}
+
+/* Services */
+.service-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.service {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr) minmax(0, 4fr);
+  gap: 16px 40px; padding: 34px 0; border-bottom: 1px solid var(--line);
+}
+.service p { margin: 0; color: var(--ink-2); max-width: 52ch; }
+.service .tags { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; list-style: none; margin: 0; padding: 0; }
+.service .tags li { font-size: .9rem; font-weight: 500; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); }
+@media (max-width: 900px) {
+  .service { grid-template-columns: 1fr; padding: 28px 0; }
+}
+
+/* Approach — a real sequence, so it is numbered */
+.approach { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); counter-reset: step; position: relative; }
+.steps::before { content: ""; position: absolute; top: 23px; left: 0; right: 0; height: 2px; background: var(--ink); }
+.step { counter-increment: step; padding-right: 28px; position: relative; }
+.step::before {
+  content: counter(step);
+  display: grid; place-items: center;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--ink);
+  font: 700 1.15rem/1 var(--display);
+  position: relative; margin-bottom: 26px;
+}
+.step:last-child::before { background: var(--accent); }
+.step h3 { margin-bottom: 10px; }
+.step p { color: var(--ink-2); margin: 0; }
+.step .meta { display: block; margin-top: 14px; font-size: .92rem; font-weight: 600; color: var(--ink); }
+@media (max-width: 900px) {
+  .steps { grid-template-columns: 1fr; gap: 0; }
+  .steps::before { top: 0; bottom: 0; left: 23px; right: auto; width: 2px; height: auto; }
+  .step { display: grid; grid-template-columns: 48px 1fr; column-gap: 20px; padding: 0 0 36px; }
+  .step::before { grid-row: 1 / span 3; margin: 0; }
+  .step:last-child { padding-bottom: 0; }
+}
+
+/* Principles + engagement */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 96px); }
+@media (max-width: 900px) { .split { grid-template-columns: 1fr; } }
+.principles { list-style: none; padding: 0; margin: 32px 0 0; }
+.principles li { padding: 20px 0; border-top: 1px solid var(--line); }
+.principles strong { display: block; font-family: var(--display); font-size: 1.2rem; font-weight: 600; margin-bottom: 4px; letter-spacing: -0.01em; }
+.principles span { color: var(--ink-2); }
+
+.models { margin-top: 32px; display: grid; gap: 14px; }
+.model { border: 1.5px solid var(--ink); border-radius: 14px; padding: 22px 24px; background: var(--paper); }
+.model:first-child { background: var(--ink); color: var(--on-deep); border-color: var(--ink); }
+.model:first-child p { color: var(--on-deep-2); }
+.model header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 6px; }
+.model h3 { font-size: 1.25rem; }
+.model .dur { font-size: .92rem; font-weight: 600; white-space: nowrap; }
+.model:first-child .dur { color: var(--accent); }
+.model p { margin: 0; color: var(--ink-2); }
+
+.industries { margin-top: clamp(56px, 8vw, 96px); padding-top: 28px; border-top: 2px solid var(--ink); display: grid; grid-template-columns: 1fr 2fr; gap: 16px 56px; }
+.industries h3 { font-size: 1.3rem; }
+.industries ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px 28px; }
+.industries li { font-family: var(--display); font-size: clamp(1.15rem, 2vw, 1.45rem); font-weight: 600; letter-spacing: -0.01em; }
+@media (max-width: 820px) { .industries { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact { background: var(--deep); color: var(--on-deep); }
+.contact h2 { color: #fff; max-width: 14ch; }
+.contact .lede { color: var(--on-deep-2); font-size: 1.125rem; max-width: 42ch; margin: 24px 0 32px; }
+.contact a.mail { font-family: var(--display); font-size: clamp(1.2rem, 2.4vw, 1.6rem); font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 7px; word-break: break-word; }
+.contact .detail { margin-top: 28px; color: var(--on-deep-2); }
+.form { display: grid; gap: 18px; }
+.form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 560px) { .form .row { grid-template-columns: 1fr; } }
+.field label { display: block; font-size: .95rem; font-weight: 600; margin-bottom: 7px; color: var(--on-deep); }
+.field input, .field select, .field textarea {
+  width: 100%; font: 400 1rem/1.4 var(--body); color: #fff;
+  background: rgba(255,255,255,.05); border: 1.5px solid #3D5C61; border-radius: 10px;
+  padding: 13px 14px;
+}
+.field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239DB4B5' stroke-width='1.6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; padding-right: 40px; }
+.field select option { color: var(--ink); }
+.field textarea { min-height: 140px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+.field input::placeholder, .field textarea::placeholder { color: #7E9799; }
+.form-note { font-size: .9rem; color: var(--on-deep-2); margin: 0; }
+.form .btn { justify-self: start; }
+.form-error { color: #F3C66A; font-size: .95rem; margin: 0; min-height: 1.4em; }
+
+/* Footer */
+.site-footer { background: var(--deep); color: var(--on-deep-2); border-top: 1px solid #23464C; padding: 32px 0 40px; font-size: .95rem; }
+.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; align-items: center; }
+.site-footer .brand { color: var(--on-deep); font-size: 1.1rem; }
+.site-footer nav { display: flex; gap: 22px; flex-wrap: wrap; }
+.site-footer nav a { text-decoration: none; }
+.site-footer nav a:hover { color: var(--on-deep); text-decoration: underline; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="top">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Syntropy AI home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0F2E33"/><circle cx="9" cy="23" r="2.6" fill="#EEF2EF"/><circle cx="16" cy="23" r="2.6" fill="#EEF2EF"/><circle cx="23" cy="23" r="2.6" fill="#EEF2EF"/><circle cx="16" cy="16" r="2.6" fill="#EEF2EF"/><circle cx="23" cy="16" r="2.6" fill="#EEF2EF"/><circle cx="23" cy="9" r="2.6" fill="#E3A72F"/></svg>
+      Syntropy AI
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#platforms">Platforms</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#work-with-us">Working with us</a></li>
+      <li><a class="btn btn-primary" href="#contact">Book a call</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Bring order to your data, then put it to work.</h1>
+        <p class="hero-lede">Syntropy AI designs, builds and runs data and AI platforms on Microsoft Azure, Databricks and Snowflake. We take scattered sources and turn them into pipelines, models and AI your teams can trust.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Book a discovery call</a>
+          <a class="btn btn-ghost" href="#services">See our services</a>
+        </div>
+      </div>
+      <figure class="hero-figure" aria-hidden="true">
+        <canvas id="syntropy"></canvas>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section platforms" id="platforms">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Three platforms, one way of working.</h2>
+        <p>We work hands-on across the three platforms most data teams run on. We'll tell you which one fits your problem, including when the answer is the one you already have.</p>
+      </div>
+      <div class="platform-cols">
+        <article class="platform">
+          <h3>Microsoft Azure</h3>
+          <p>Fabric, OneLake and Power BI for teams already living in the Microsoft ecosystem.</p>
+          <ul>
+            <li>Microsoft Fabric and OneLake</li>
+            <li>Azure Synapse and Data Factory</li>
+            <li>Power BI semantic models</li>
+            <li>Azure OpenAI and AI Foundry</li>
+            <li>Microsoft Purview</li>
+          </ul>
+        </article>
+        <article class="platform">
+          <h3>Databricks</h3>
+          <p>An open lakehouse for engineering-heavy teams that want data and ML on one platform.</p>
+          <ul>
+            <li>Delta Lake and medallion design</li>
+            <li>Unity Catalog</li>
+            <li>Lakeflow pipelines and Jobs</li>
+            <li>MLflow and Model Serving</li>
+            <li>Mosaic AI agents and Databricks Apps</li>
+          </ul>
+        </article>
+        <article class="platform">
+          <h3>Snowflake</h3>
+          <p>An elastic warehouse for SQL-first teams who want analytics that scale without tuning.</p>
+          <ul>
+            <li>Warehouse design and Snowpark</li>
+            <li>dbt modelling</li>
+            <li>Cortex AI</li>
+            <li>Streamlit in Snowflake</li>
+            <li>Horizon governance and cost control</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What we do</h2>
+        <p>Engagements usually span more than one of these. Most start with the foundations, because analytics and AI are only as good as the data underneath them.</p>
+      </div>
+      <ul class="service-list">
+        <li class="service">
+          <h3>Data platform engineering</h3>
+          <p>Lakehouse and warehouse foundations: ingestion, modelling, orchestration and CI/CD. Everything is built as code in your repository, so it survives the next team change.</p>
+          <ul class="tags"><li>Ingestion pipelines</li><li>Medallion architecture</li><li>Infrastructure as code</li><li>DevOps</li></ul>
+        </li>
+        <li class="service">
+          <h3>Analytics and BI</h3>
+          <p>Semantic models people actually reuse. Star schemas, governed measures and deployment pipelines, so every report tells the same story.</p>
+          <ul class="tags"><li>Power BI</li><li>Fabric</li><li>Dimensional modelling</li><li>Self-service</li></ul>
+        </li>
+        <li class="service">
+          <h3>AI and machine learning</h3>
+          <p>Forecasting, anomaly detection and assistants grounded in your own data. Evaluation, monitoring and access control are part of the build, not an afterthought.</p>
+          <ul class="tags"><li>RAG and agents</li><li>Predictive models</li><li>MLOps</li><li>MCP integrations</li></ul>
+        </li>
+        <li class="service">
+          <h3>Governance and data quality</h3>
+          <p>Catalogues, lineage, access policies and automated quality checks, so the numbers in the board pack match the numbers in the warehouse.</p>
+          <ul class="tags"><li>Unity Catalog</li><li>Purview</li><li>Data contracts</li><li>Quality testing</li></ul>
+        </li>
+        <li class="service">
+          <h3>Migration and modernisation</h3>
+          <p>Moving from on-premises SQL Server, legacy ETL or ageing warehouses to a modern platform in planned stages, with old and new running side by side until you're ready to switch.</p>
+          <ul class="tags"><li>SQL Server</li><li>Synapse to Fabric</li><li>Warehouse to lakehouse</li></ul>
+        </li>
+        <li class="service">
+          <h3>Cost and performance</h3>
+          <p>Find out where your compute spend goes. We right-size clusters, warehouses and capacities, and fix the slow queries and refreshes your users complain about.</p>
+          <ul class="tags"><li>FinOps</li><li>Query tuning</li><li>Capacity planning</li></ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section approach" id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How an engagement runs</h2>
+        <p>Short, visible steps. You see working output every couple of weeks, and your own people are part of the team from the first day.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3>Assess</h3>
+          <p>We review your sources, platform, team and the decisions your data should support.</p>
+          <span class="meta">You get a prioritised roadmap</span>
+        </li>
+        <li class="step">
+          <h3>Design</h3>
+          <p>Target architecture, data model and governance, sized for the team that will own it.</p>
+          <span class="meta">You get an architecture you can defend</span>
+        </li>
+        <li class="step">
+          <h3>Build</h3>
+          <p>Short iterations that ship working pipelines, models and reports, with your engineers pairing with ours.</p>
+          <span class="meta">You get working software</span>
+        </li>
+        <li class="step">
+          <h3>Run and hand over</h3>
+          <p>Monitoring, runbooks, documentation and training, so you're never dependent on us.</p>
+          <span class="meta">You get a team that owns it</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="work-with-us">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <h2>What you can expect</h2>
+          <ul class="principles">
+            <li><strong>Senior people doing the work</strong><span>The people you meet in the first call are the people building your platform.</span></li>
+            <li><strong>Your code, your repository</strong><span>Everything we build lives in your source control from day one, with tests and pipelines.</span></li>
+            <li><strong>Platform-neutral advice</strong><span>We don't resell licences. If your current platform can do the job, we'll say so.</span></li>
+            <li><strong>Hand-over planned from the start</strong><span>Documentation and knowledge transfer are scoped into every engagement, not bolted on at the end.</span></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Ways to work with us</h2>
+          <div class="models">
+            <article class="model">
+              <header><h3>Platform assessment</h3><span class="dur">2–4 weeks, fixed price</span></header>
+              <p>A focused review of your current data estate with a costed, prioritised roadmap. A good place to start.</p>
+            </article>
+            <article class="model">
+              <header><h3>Delivery project</h3><span class="dur">Scoped milestones</span></header>
+              <p>A defined outcome, such as a new lakehouse, a migration or an AI use case, delivered in iterations.</p>
+            </article>
+            <article class="model">
+              <header><h3>Embedded data team</h3><span class="dur">Monthly</span></header>
+              <p>Engineers who join your team for ongoing platform work, delivery support and mentoring.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="industries">
+        <h3>Sectors we know well</h3>
+        <ul>
+          <li>Manufacturing and maritime</li>
+          <li>Energy and process industries</li>
+          <li>Banking and insurance</li>
+          <li>Retail and consumer goods</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section contact" id="contact">
+    <div class="wrap split">
+      <div>
+        <h2>Tell us what you're working on.</h2>
+        <p class="lede">A 30-minute call is usually enough to tell whether we can help. No slides, no sales pitch.</p>
+        <a class="mail" id="mail-link" href="mailto:hello@syntropy-ai.example">hello@syntropy-ai.example</a>
+        <p class="detail">Based in Copenhagen, working with teams across Europe.</p>
+      </div>
+      <form class="form" id="contact-form" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input id="f-name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="f-company">Company</label>
+            <input id="f-company" name="company" autocomplete="organization">
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-platform">Platform</label>
+          <select id="f-platform" name="platform">
+            <option>Not decided yet</option>
+            <option>Microsoft Azure / Fabric</option>
+            <option>Databricks</option>
+            <option>Snowflake</option>
+            <option>More than one</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-message">What do you need help with?</label>
+          <textarea id="f-message" name="message" placeholder="A few lines on your data, your platform and what you want to change." required></textarea>
+        </div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button class="btn btn-primary" type="submit">Write the email</button>
+        <p class="form-note">This opens your email app with your message filled in, ready to send.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 32 32" aria-hidden="true" width="26" height="26"><rect width="32" height="32" rx="7" fill="#E4ECE9"/><circle cx="9" cy="23" r="2.6" fill="#0F2E33"/><circle cx="16" cy="23" r="2.6" fill="#0F2E33"/><circle cx="23" cy="23" r="2.6" fill="#0F2E33"/><circle cx="16" cy="16" r="2.6" fill="#0F2E33"/><circle cx="23" cy="16" r="2.6" fill="#0F2E33"/><circle cx="23" cy="9" r="2.6" fill="#E3A72F"/></svg>
+      Syntropy AI
+    </a>
+    <nav aria-label="Footer">
+      <a href="#platforms">Platforms</a>
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span>© <span id="year">2026</span> Syntropy AI</span>
+  </div>
+</footer>
+
+<script>
+/* ---- Edit this one line to set your contact address ---- */
+const CONTACT_EMAIL = "hello@syntropy-ai.example";
+
+(function () {
+  // Contact address
+  const mail = document.getElementById("mail-link");
+  mail.href = "mailto:" + CONTACT_EMAIL;
+  mail.textContent = CONTACT_EMAIL;
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Header border on scroll
+  const header = document.querySelector(".site-header");
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  // Mobile menu
+  const toggle = document.querySelector(".menu-toggle");
+  const links = document.getElementById("nav-links");
+  const setMenu = (open) => {
+    links.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  };
+  toggle.addEventListener("click", () => setMenu(!links.classList.contains("open")));
+  links.addEventListener("click", (e) => { if (e.target.closest("a")) setMenu(false); });
+
+  // Contact form → prefilled email (works on static hosting, no backend)
+  const form = document.getElementById("contact-form");
+  const err = document.getElementById("form-error");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    const name = (d.get("name") || "").trim();
+    const msg = (d.get("message") || "").trim();
+    if (!name || !msg) {
+      err.textContent = !name ? "Add your name so we know who to reply to." : "Add a few lines about what you need help with.";
+      (!name ? form.elements.name : form.elements.message).focus();
+      return;
+    }
+    err.textContent = "";
+    const company = (d.get("company") || "").trim();
+    const subject = "Enquiry from " + name + (company ? " (" + company + ")" : "");
+    const body = msg + "\n\nPlatform: " + d.get("platform") + "\n\n" + name + (company ? "\n" + company : "");
+    window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  });
+
+  // Hero: scattered points settle into an ordered dot-matrix chart
+  const canvas = document.getElementById("syntropy");
+  const ctx = canvas.getContext("2d");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const INK = "#0F2E33", MUTED = "#9FB3B2", ACCENT = "#E3A72F";
+  let W = 0, H = 0, dpr = 1, pts = [], start = 0, pointer = { x: -1e4, y: -1e4 };
+
+  function rand(seed) { let s = seed; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+
+  function build() {
+    const r = canvas.getBoundingClientRect();
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = r.width; H = r.height;
+    canvas.width = Math.round(W * dpr); canvas.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const cols = W < 420 ? 10 : 13, rows = 12;
+    const padX = W * 0.06, padTop = H * 0.06, padBot = H * 0.1;
+    const cw = (W - padX * 2) / cols, ch = (H - padTop - padBot) / rows;
+    const dot = Math.max(2.2, Math.min(cw, ch) * 0.2);
+    const rnd = rand(7);
+    pts = [];
+    for (let c = 0; c < cols; c++) {
+      const t = c / (cols - 1);
+      const h = Math.max(2, Math.min(rows, Math.round(rows * (0.18 + 0.78 * Math.pow(t, 1.15)) + (rnd() - 0.5) * 2.2)));
+      for (let k = 0; k < rows; k++) {
+        const filled = k < h;
+        const tx = padX + cw * (c + 0.5);
+        const ty = H - padBot - ch * (k + 0.5);
+        pts.push({
+          sx: rnd() * W, sy: rnd() * H,           // scattered start
+          tx, ty,                                 // ordered target
+          x: 0, y: 0, ox: 0, oy: 0,               // pointer offset
+          r: filled ? dot : dot * 0.55,
+          col: filled ? (k === h - 1 && c === cols - 1 ? ACCENT : (k === h - 1 ? INK : INK)) : MUTED,
+          a: filled ? 1 : 0.35,
+          delay: c * 55 + rnd() * 380,
+          top: filled && k === h - 1
+        });
+      }
+    }
+    // accent the top of the last few columns
+    const tops = pts.filter(p => p.top).slice(-3);
+    tops.forEach(p => p.col = ACCENT);
+  }
+
+  const ease = (t) => 1 - Math.pow(1 - t, 4);
+
+  function frame(now) {
+    if (!start) start = now;
+    const el = now - start;
+    ctx.clearRect(0, 0, W, H);
+    // baseline
+    ctx.strokeStyle = INK; ctx.globalAlpha = Math.min(1, el / 1200); ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(W * 0.06, H * 0.9 + 0.5); ctx.lineTo(W * 0.94, H * 0.9 + 0.5); ctx.stroke();
+
+    let settled = true;
+    for (const p of pts) {
+      const t = reduce ? 1 : Math.max(0, Math.min(1, (el - p.delay) / 1500));
+      if (t < 1) settled = false;
+      const e = ease(t);
+      // pointer repulsion (only after settling begins)
+      const dx = p.tx - pointer.x, dy = p.ty - pointer.y, d2 = dx * dx + dy * dy, R = 70;
+      let fx = 0, fy = 0;
+      if (!reduce && d2 < R * R) { const d = Math.sqrt(d2) || 1, f = (1 - d / R) * 18; fx = dx / d * f; fy = dy / d * f; }
+      p.ox += (fx - p.ox) * 0.15; p.oy += (fy - p.oy) * 0.15;
+      if (Math.abs(p.ox) > 0.05 || Math.abs(p.oy) > 0.05) settled = false;
+      p.x = p.sx + (p.tx - p.sx) * e + p.ox;
+      p.y = p.sy + (p.ty - p.sy) * e + p.oy;
+      ctx.globalAlpha = p.a * (0.35 + 0.65 * e);
+      ctx.fillStyle = p.col;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+    running = !settled;
+    if (running) requestAnimationFrame(frame);
+  }
+
+  let running = false;
+  const kick = () => { if (!running) { running = true; requestAnimationFrame(frame); } };
+
+  canvas.parentElement.addEventListener("pointermove", (e) => {
+    const r = canvas.getBoundingClientRect(); pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top; kick();
+  });
+  canvas.parentElement.addEventListener("pointerleave", () => { pointer.x = pointer.y = -1e4; kick(); });
+
+  let rt;
+  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => { build(); start = performance.now() - 1e5; kick(); }, 120); });
+
+  build(); kick();
+})();
+</script>
+</body>
+</html>
